@@ -5,8 +5,13 @@ import { ProductController } from './product/product.controller';
 import { ProductService } from './product/product.service';
 import { ProductModule } from './product/product.module';
 
+import { MongooseModule } from '@nestjs/mongoose';
+
 @Module({
-  imports: [ProductModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/test-my-stock'),
+    ProductModule,
+  ],
   controllers: [AppController, ProductController],
   providers: [AppService, ProductService],
 })
