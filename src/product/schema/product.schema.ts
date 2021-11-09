@@ -1,7 +1,39 @@
-import { Document, Schema } from 'mongoose';
-import { Product } from '../interfaces/product.interface';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
 
 export type ProductDocument = Product & Document;
+
+@Schema()
+export class Product {
+  @Prop({ required: true })
+  owner: string;
+
+  @Prop({ required: true })
+  name: string;
+
+  @Prop({ required: true })
+  category: string;
+
+  @Prop({ required: true })
+  description: string;
+
+  @Prop({ required: true })
+  imageCoverURL: string;
+
+  @Prop({ required: true })
+  imagesURLs: [string];
+
+  @Prop({ required: true })
+  price: number;
+
+  @Prop({ required: true })
+  stock: number;
+
+  @Prop({ required: true })
+  createdAt: Date;
+}
+
+export const ProductSchema = SchemaFactory.createForClass(Product);
 
 // export const ProductSchema = new Schema({
 //   name: {
